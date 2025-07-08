@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Services Dashboard</h1>
+        <a href="/admin/add" class="btn btn-primary mb-3">Add New Service</a>
+        <a href="/admin/categories" class="btn btn-info mb-3">Manage Categories</a>
+        <a href="/admin/menu" class="btn btn-success mb-3">Manage Menu</a>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for service in services %}
+                <tr>
+                    <td>{{ service.name }}</td>
+                    <td>{{ service.category.name }}</td>
+                    <td>{{ service.address }}</td>
+                    <td>{{ service.phone }}</td>
+                    <td>
+                        <a href="/admin/edit/{{ service.id }}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="/admin/delete/{{ service.id }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

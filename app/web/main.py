@@ -5,8 +5,12 @@ from app.web.schemas import RawText, ServiceData
 from app.services.ai import get_service_data_from_text
 from app.services.crud import create_service
 from app.core.db import get_async_session
+from app.web.admin import router as admin_router
 
 app = FastAPI(title="Snovsk Bot Admin Panel")
+
+app.include_router(admin_router, prefix="/admin", tags=["admin"])
+
 
 @app.get("/")
 async def read_root():

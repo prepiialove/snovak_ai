@@ -1,3 +1,4 @@
+from typing import Optional, Union
 from pydantic import BaseModel
 
 class RawText(BaseModel):
@@ -5,19 +6,19 @@ class RawText(BaseModel):
 
 class CategoryData(BaseModel):
     name: str
-    icon: str | None = None
+    icon: Optional[str] = None
 
     class Config:
         from_attributes = True
 
 class ServiceData(BaseModel):
     name: str
-    category: CategoryData | str
-    address: str | None = None
-    phone: str | None = None
-    schedule: str | None = None
-    social_media: str | None = None
-    description: str | None = None
+    category: Union[CategoryData, str]
+    address: Optional[str] = None
+    phone: Optional[str] = None
+    schedule: Optional[str] = None
+    social_media: Optional[str] = None
+    description: Optional[str] = None
 
     class Config:
         from_attributes = True

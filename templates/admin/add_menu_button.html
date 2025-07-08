@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Menu Button</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Add New Menu Button</h1>
+        <form action="/admin/menu/add" method="post">
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input type="text" class="form-control" id="text" name="text" required>
+            </div>
+            <div class="form-group">
+                <label for="parent_id">Parent Button</label>
+                <select class="form-control" id="parent_id" name="parent_id">
+                    <option value="">None</option>
+                    {% for button in buttons %}
+                    <option value="{{ button.id }}">{{ button.text }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Button</button>
+            <a href="/admin/menu" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -7,7 +7,7 @@ from aiogram.enums import ParseMode
 
 from app.core.config import settings
 from app.core.db import async_session_maker
-from app.bot.handlers import common, category
+from app.bot.handlers import common, category, search
 from app.bot.middleware.db import DbSessionMiddleware
 
 async def main() -> None:
@@ -24,6 +24,7 @@ async def main() -> None:
     # Register handlers
     dp.include_router(common.router)
     dp.include_router(category.router)
+    dp.include_router(search.router)
 
     # Start polling
     await dp.start_polling(bot)

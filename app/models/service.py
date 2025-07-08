@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, Float
 from sqlalchemy.orm import relationship
 
 from app.core.db import Base
@@ -13,6 +13,8 @@ class Service(Base):
     schedule = Column(String(255))
     social_media = Column(String(255))
     description = Column(Text)
+    latitude = Column(Float)
+    longitude = Column(Float)
     
     category_id = Column(Integer, ForeignKey("categories.id"))
     category = relationship("Category", back_populates="services")
